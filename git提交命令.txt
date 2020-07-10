@@ -25,4 +25,15 @@ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 
 
 
-之后就可以愉快的git push -u origin master了
+二次提交Git操作
+1.输入git status 查看项目中哪些文件发生了变化，当做验证使用
+
+2.git add . 将所有变更文件添加进来
+
+3.git status 这个时候文件都变成了 new file
+
+4.git commit -am 'first commit init project' //但是在window下单引号换双引号,提交到本地仓库
+
+5.git push 把本地的推送到远程的分支上面即可
+
+6.git status 查看
