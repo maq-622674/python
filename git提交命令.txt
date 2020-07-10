@@ -1,0 +1,28 @@
+适应于空的仓库
+
+创建ssh密钥
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+三个回车
+把.ssh/id_rsa添加到github上
+1.git config --list
+2.git config --global user.name lws
+3.git config --global user.email lws__xinlang@qq.com
+4.git config --list
+5.进入要提交的文件夹 git init
+6.git add .
+7.git commit -m "提交python代码"
+8.git remote add origin htps.............. .git
+9.git push -u origin master
+10.完成
+11.可以自行添加README.md
+
+
+
+如果添加了README.md
+会造成远端和本地文件不符会提交错误
+解决方法:git pull --rebase origin master
+进行代码合并
+
+
+
+之后就可以愉快的git push -u origin master了
