@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input class="upload-input" type="file" name="picture" onchange="upLoad(this)">
+</body>
+
+</html>
+<script>
+    /**
+     * input上传图片
+     * @param {HTMLInputElement} el 
+     */
+    function upLoad(el) {
+        /** 上传文件 */
+        const file = el.files[0];
+        /** 上传类型数组 */
+        const types = ['image/jpg', 'image/png', 'image/jpeg', 'image/gif'];
+        // 判断文件类型
+        if (types.indexOf(file.type) < 0) {
+            file.value = null; // 这里一定要清空当前错误的内容
+            return alert('文件格式只支持：jpg 和 png');
+        }
+        // 判断大小
+        if (file.size > 2 * 1024 * 1024) {
+            file.value = null;
+            return alert('上传的文件不能大于2M');
+        }
+
+        const formData = new FormData(); // 这个是传给后台的数据
+        formData.append('img', file); // 这里'img'是跟后台约定好的字段
+        console.log(formData, file);
+        // 最后传ajax给后台，这里我用上面的方法
+        ajax({
+            url: 'http://xxx.com/uploadImg',
+            method: 'POST',
+            data: {},
+            file: formData,
+            overtime: 5000,
+            success(res) {
+                console.log('上传成功', res);
+            },
+            fail(err) {
+                console.log('上传失败', err);
+            },
+            timeout() {
+                console.warn('XMLHttpRequest 请求超时 !!!');
+            }
+        });
+    }
+</script>

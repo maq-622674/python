@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<!-- 这里需要说明一下应用场景：
+我先前做H5活动页（红包雨）的时候遇到一个问题，
+就是在移动端快速点击节点并播放音频的时候，aduio标签播放的速度会有很严重的延迟。
+后来搜了下相关资料发现一个音频API：new AudioContext，和我之前做小游戏时用到的引擎（cocos creator）音频API是一样的。
+然后找了挺久发现这个API的使用资料、教程还是挺少的可能是除了做H5游戏引擎的人会用到吧，比较详细的也只有MDN官网，剩下的就是一些基于这个API的JavaScript库，
+但是我需要用到的功能比较简单，就是点击播放无延迟。所以自己去实现一个基于new AudioContext常用的音频组件。 -->
+<script>
+    class AudioContextModule {
+        /**
+         * AudioContext 音频组件 解决在移动端网页上标签播放音频延迟的方案 貌似 H5 游戏引擎也是使用这个实现
+         * 资料参考：https://www.cnblogs.com/Wayou/p/html5_audio_api_visualizer.html
+         */
+        constructor() {
+            const AudioModule = window.AudioContext || window.webkitAudioContext || window.mozAudioContext || window.msAudioContext;
+            this.context = new AudioModule();
+            this.analyser = this.context.createAnalyser();
+            this.analyser.fftSize = 256;
+        }
+
+        /** 是否加载完成 */
+        loaded = false;
+
+        /**
+         * 音频上下文
+         * @type {AudioContext}
+         */
+        context = null;
+
+        /** 
+         * @type {AnalyserNode} 
+         */
+        analyser = null;
+
+        /**
+         * @type {AudioBufferSourceNode}
+         */
+        bufferNode = null;
+
+        /**
+         * @type {AudioBuffer}
+         */
+        buffer = null;
+
+        /**
+         * 加载路径音频文件
+         * @param {string} url 音频路径
+         * @param {Function} callback 加载完成回调
+         */
+        loadPath(url, callback) {
+            const XHR = new XMLHttpRequest();
+            XHR.open('GET', url, true);
+            XHR.responseType = 'arraybuffer';
+            // 先加载音频文件
+            XHR.onload = () => {
+                this.context.decodeAudioData(XHR.response, buffer => {
+                    // 最后缓存音频资源
+                    this.buffer = buffer;
+                    this.loaded = true;
+                    if (typeof callback === 'function') callback();
+                });
+            }
+            XHR.send(null);
+        }
+
+        /** 
+         * 加载 input 音频文件
+         * @param {File} file 音频文件
+         * @param {Function} callback 加载完成回调
+         */
+        loadFile(file, callback) {
+            const FR = new FileReader();
+            // 先加载音频文件
+            FR.onload = e => {
+                let res = e.target.result;
+                // 然后解码
+                this.context.decodeAudioData(res, buffer => {
+                    // 最后缓存音频资源
+                    this.buffer = buffer;
+                    this.loaded = true;
+                    if (typeof callback === 'function') callback();
+                });
+            }
+            FR.readAsArrayBuffer(file);
+        }
+
+        /** 播放音频 */
+        play() {
+            if (!this.loaded) return console.warn('音频未加载完成 !!!');
+            // 这里有个问题，就是创建的音频对象不能缓存下来然后多次执行 start , 所以每次都要创建然后 start()
+            this.bufferNode = this.context.createBufferSource();
+            this.bufferNode.connect(this.analyser);
+            this.analyser.connect(this.context.destination);
+            this.bufferNode.buffer = this.buffer;
+            this.bufferNode.start(0);
+        }
+
+        /** 停止播放 */
+        stop() {
+            if (!this.bufferNode) return console.warn('音频未播放 !!!');
+            this.bufferNode.stop();
+        }
+    }
+</script>

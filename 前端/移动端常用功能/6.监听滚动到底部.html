@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    /**
+     * 监听滚动到底部
+     * @param {number} number 距离底部多少像素触发(像素)
+     * @param {Function} callback 到达底部回调函数
+     * @param {boolean} once 是否为一次性（防止重复用）
+     */
+    function scrollToBottom(number = 0, callback, once = false) {
+        const doc = document;
+        /** 滚动事件 */
+        function onScroll() {
+            /** 滚动的高度 */
+            let scrollTop = doc.documentElement.scrollTop === 0 ? doc.body.scrollTop : doc.documentElement.scrollTop;
+            /** 滚动条高度 */
+            let scrollHeight = doc.documentElement.scrollTop === 0 ? doc.body.scrollHeight : doc.documentElement.scrollHeight;
+            if (scrollHeight - scrollTop - number <= window.innerHeight) {
+                if (typeof callback === 'function') callback();
+                if (once) window.removeEventListener('scroll', onScroll);
+            }
+        }
+        window.addEventListener('scroll', onScroll);
+        onScroll(); // 先执行一次
+    }
+</script>

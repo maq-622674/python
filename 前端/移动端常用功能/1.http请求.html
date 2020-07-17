@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<!-- 
+1.http请求
+第一种:fetch
+我在H5单页的一些简单GET请求时通常用得最多，因为代码极少
+ -->
+<script>
+    /**
+     * `fetch`请求 
+     * @description learn：https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API
+     * @param {'GET'|'POST'} method 请求方法：这里我只枚举了常用的两种
+     * @param {string} url 请求路径
+     * @param {object} data 请求参数对象
+     * @param {number} timeout 超时毫秒
+     */
+    function theFetch(method, url, data = {}, timeout = 5000) {
+        let dataPost = null;
+        let dataGet = '';
+        switch (method) {
+            case 'POST':
+                // 若后台没设置接收 JSON 则不行 需要跟 GET 一样的解析对象传参
+                dataPost = JSON.stringify(data);
+                break;
+
+            case 'GET':
+                // 解析对象传参
+                for (const key in data) {
+                    dataGet += `&${key}=${data[key]}`;
+                }
+                if (dataGet) {
+                    dataGet = '?' + dataGet.slice(1);
+                }
+                break;
+        }
+        return new Promise((resolve, reject) => {
+            fetch(url + dataGet, {
+                // credentials: 'include',  // 携带cookie配合后台用
+                // mode: 'cors',            // 貌似也是配合后台设置用的跨域模式
+                method: method,
+                headers: {
+                    'Content-Type': 'application/json' // 这个根据后台约定
+                },
+                body: dataPost
+            }).then(response => {
+                // 把响应的信息转为`json`
+                return response.json();
+            }).then(res => {
+                resolve(res);
+            }).catch(error => {
+                reject(error);
+            });
+            setTimeout(reject.bind(this, 'fetch is timeout'), timeout);
+        });
+    }
+    fetch('https://mock.yonyoucloud.com/mock/7551/543').then(response => response.text()).then(res => {
+        console.log('请求成功', res);
+    })
+</script>

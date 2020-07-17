@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function isPCBroswer() {
+
+        let e = navigator.userAgent.toLowerCase()
+
+        , t = "ipad" == e.match(/ipad/i)
+
+        , i = "iphone" == e.match(/iphone/i)
+
+        , r = "midp" == e.match(/midp/i)
+
+        , n = "rv:1.2.3.4" == e.match(/rv:1.2.3.4/i)
+
+        , a = "ucweb" == e.match(/ucweb/i)
+
+        , o = "android" == e.match(/android/i)
+
+        , s = "windows ce" == e.match(/windows ce/i)
+
+        , l = "windows mobile" == e.match(/windows mobile/i);
+
+        return !(t || i || r || n || a || o || s || l)
+
+    }
+</script>
+
+</html>

@@ -1,0 +1,8 @@
+小于12px就会出现用户打开文字往上偏移
+display:flex;
+justify-content: center;
+align-items: center;
+就能解决
+
+
+flex布局

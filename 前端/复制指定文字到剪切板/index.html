@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    function copy(text, callback) {
+        if (document.execCommand('Copy')) {
+            //创建input
+            var inputZ = document.createElement('input');
+            //添加Id,用于后续操作
+            inputZ.setAttribute('id', 'inputCopy');
+            //获取传入的值
+            inputZ.value = text;
+            //创建的input添加到body
+            document.body.appendChild(inputZ);
+            //选中input中的值(使用前面的Id)
+            document.getElementById('inputCopy').select();
+            //把值复制下来
+            document.execCommand('Copy')
+            alert('複製成功');
+            //删除添加的input
+            document.body.removeChild(inputZ);
+            // 成功回調1
+            callback(1);
+        } else {
+            // 失敗回調2
+            callback(2);
+        }
+    }
+
+    //必须在触发事件中调用(如点击事件)
+    copy("www.supersjz.cn", function(type) {
+        if (type == 1) {
+            console.log("复制成功")
+        }
+    })
+</script>
