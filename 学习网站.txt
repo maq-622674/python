@@ -1,1 +1,11 @@
 https://www.zhihu.com/question/58151047
+80个python练手项目列表https://www.shiyanlou.com/questions/102676/?utm_source=baidu&utm_medium=cpc&utm_campaign=python&utm_term=keywords&renqun_youhua=417274
+Django练习网站https://www.djangosites.org/
+Django学习资料网址https://blog.csdn.net/weixin_30505043/article/details/98576648
+Tornado电子网页书http://demo.pythoner.com/itt2zh/index.html
+Django初学者:https://djangobook.com/beginning-django-tutorial-contents/
+
+
+
+
+	
