@@ -1,20 +1,21 @@
 #需要自己找密码字典放入password里面
+
 import zipfile
 
-zfile = zipfile.ZipFile("C:\\Users\\jimuti\\Desktop\\python\\80个Python练手项目列表\\12.Python实现Zip文件的暴力破解\\index.zip")
+#你要破解的.zip文件
+a=""
+#破解完放在哪里
+b=""
+#密码字典
+c=""
 
-passFile=open('C:\\Users\\jimuti\\Desktop\\python\\80个Python练手项目列表\\12.Python实现Zip文件的暴力破解\\password.txt') #读取你设定的密码文件
 
+zfile = zipfile.ZipFile(a)
+passFile=open(c) #读取你设定的密码文件
 for line in passFile.readlines():
-
   try:
-
     password = line.strip('\n')
-
-    zfile.extractall(path='C:\\Users\\jimuti\\Desktop\\python\\80个Python练手项目列表\\12.Python实现Zip文件的暴力破解\\', members=zfile.namelist(), pwd=password.encode('utf-8'))
-
+    zfile.extractall(path=b, members=zfile.namelist(), pwd=password.encode('utf-8'))
     break
-
   except:
-
     print("又错了")

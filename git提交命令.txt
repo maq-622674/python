@@ -5,8 +5,8 @@ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 三个回车
 把.ssh/id_rsa添加到github上
 1.git config --list
-2.git config --global user.name lws
-3.git config --global user.email lws__xinlang@qq.com
+2.git config --global user.name 你的名字
+3.git config --global user.email 你的邮箱
 4.git config --list
 5.进入要提交的文件夹 git init
 6.git add .
@@ -32,7 +32,7 @@ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 
 3.git status 这个时候文件都变成了 new file
 
-4.git commit -am 'first commit init project' //但是在window下单引号换双引号,提交到本地仓库
+4.git commit -am "first commit init project" //但是在window下单引号换双引号,提交到本地仓库
 
 5.git push 把本地的推送到远程的分支上面即可
 
