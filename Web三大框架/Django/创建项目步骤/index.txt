@@ -1,0 +1,55 @@
+1.给python默认版本安装virtualenv这个包,命令:
+pip install virtualenv
+
+2.使用命令
+使用pip list命令,查看是否安装成功
+
+最好在项目目录下使用
+3.使用命令virtualenv env
+
+4.启动虚拟环境
+cd env 进入虚拟环境目录
+cd Scripts进入目录下的Scripts文件夹
+activate.bat运行文件夹内的activate.bat文件启动环境
+
+5.退出虚拟环境
+deactivate.bat
+
+https://blog.csdn.net/baoshuowl/article/details/79651699
+
+
+6.创建项目
+在虚拟环境命令行中，运行以下命令：
+django-admin startproject mfdw_site
+此命令将在您的项目目录中自动创建一个新目录，以及一个基本但功能齐全的Django网站的所有必需文件。
+
+接下来，我们需要创建数据库。
+Django默认包含多个应用程序（例如管理程序和用户管理。其中一些应用程序至少使用一个数据库表，因此我们需要先创建一个数据库和表，然后才能使用它们。
+为此，请cd mfdw_site在命令提示符下键入以切换到mfdw_site上一步中创建的文件夹并运行命令：
+python manage.py migrate
+
+该migrate命令根据命令创建的安装文件创建一个新的SQLite数据库和任何必要的数据库表startproject。
+如果一切按计划进行，您将看到适用于每次迁移的消息。
+现在，让我们运行The Development Server来验证您的Django项目是否有效。转到外部mysite目录，然后键入python manage.py runserver并按Enter。
+这将启动Django开发服务器，这是用Python编写的轻量级Web服务器。开发服务器已创建，因此您可以快速进行开发，而无需准备配置生产服务器，直到准备好进行部署。
+服务器启动时，Django会在告诉您开发服务器已启动并在上运行时输出一些消息127.0.0.1:8000。127.0.0.1是本地主机或本地计算机的IP地址。该:8000是告诉你，Django是在端口8000的本地主机上侦听。
+
+如果需要，您实际上可以更改端口号，但是我从来没有找到更改它的充分理由，因此最好使它保持简单并将其保留为默认值。
+现在服务器已运行，请使用Web浏览器访问开发服务器的IP地址。您将看到Django的默认主页，其中包含一个很酷的动画火箭。
+oo！有效！给自己一个当之无愧的轻拍。
+
+端口号被占用使用
+python manage.py runserver 8888
+
+
+django项目结构
+该env_mfdw文件夹是用于存储虚拟环境文件的位置。对于高级用户而言，这里有很多有趣的东西，但是作为初学者，最好将所有内容都保留在此文件夹中。
+外部mfdw_site文件夹只是您项目的容器。当startproject命令创建文件夹时，Django并不关心文件夹名称，因此您可以将其重命名为对您有意义的名称。
+在外部mfdw_site文件夹中有两个文件：
+db.sqlite3。运行迁移命令时创建的数据库；和
+manage.py。一个命令行实用程序，用于从您的项目中执行Django命令。
+内部mfdw_site文件夹是您的Django项目。该init.py文件夹中的文件告诉Python该目录是Python软件包。
+settings.py 包含项目的设置。
+urls.py包含项目级别的URL声明。默认情况下，它包含一个用于管理员的URL模式。
+wsgi.py使WSGI兼容的Web服务器可以为您的项目提供服务。该文件仅在部署中使用。
+

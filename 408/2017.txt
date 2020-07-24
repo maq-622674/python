@@ -1,0 +1,21 @@
+1.下列函数的时间复杂度是
+int func(int n)
+{
+    int i=0,sum=0;
+    while(sum<n)sum+=++i;
+    return i;
+}
+A.O(logn)
+B.O(n^1/2)
+C.O(n)
+D.O(nlogn)
+分析:
+i=0,sum=0,n=1
+sum=1
+
+i=0,sum=0,n=2
+sum=sum+(++i)
+sum=0+1=1
+sum=1+1=2
+
+

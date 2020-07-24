@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script src="jq.js"></script>
+<script>
+    function ajaxGet(url) {
+        return new Promise(function(resolve, reject) {
+            $.ajax({
+                url: url,
+                type: 'GET',
+                success: function(res) {
+                    resolve(res)
+                },
+                error: function(err) {
+                    reject(url + '这个接口请求失败')
+                }
+            })
+        })
+    };
+    async function getDate() {
+        console.log('开始发送ajax请求')
+        try {
+            let result = await ajaxGet('https://mock.yonyoucloud.com/mock/7551/543'); // 执行到这里报错，直接跳至下面 catch() 语句
+            console.log(result);
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    getDate()
+</script>
+
+</html>
