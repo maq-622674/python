@@ -1,6 +1,0 @@
-基于Python语言，版本：>=3.5及以上。
-使用Django框架，版本：1.11.11的LTS版本。
-MySQL数据库
-连接数据库：pymysql=0.8.0
-图像处理： Pillow=5.0.0
-Web前端技术：HTML、CSS、JavaScript和Jquery等
