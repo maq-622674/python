@@ -1,7 +1,9 @@
 <template>
     <footer>
+        <!-- 改进这里用后端返回的值 -->
         <p>Copyright 2020 Narito Takizawa.</p>
         <ul>
+            <!-- 这里用for循环 -->
             <li><a href="https://twitter.com/toritoritorina">Twitter</a></li>
             <li><a href="mailto:toritoritorina@gmail.com">Mail</a></li>
             <li><a href="https://www.amazon.co.jp/hz/wishlist/ls/2ZCE9KHVM7FRA?&sort=default">WishList</a></li>

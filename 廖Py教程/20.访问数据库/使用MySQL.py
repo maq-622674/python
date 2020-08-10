@@ -1,7 +1,12 @@
 # 导入MySQL驱动:
 import mysql.connector
 # 注意把password设为你的root口令:
-conn = mysql.connector.connect(user='root', password='password', database='test')
+conn = mysql.connector.connect( 
+    host='rm-wz97d5ot77lk3t824sm.mysql.rds.aliyuncs.com', # 主机模块
+    port=3306, # 端口号
+    user='aaa',# 用户名
+    password='1234567890', # 密码
+)
 cursor = conn.cursor()
 # 创建user表:
 cursor.execute('create table user (id varchar(20) primary key, name varchar(20))')

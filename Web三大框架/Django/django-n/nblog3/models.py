@@ -1,5 +1,6 @@
 '''
 数据模块
+models.py：应用的数据模型
 '''
 from django.db import models
 from django.utils import timezone

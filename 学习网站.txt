@@ -9,6 +9,20 @@ Django初学者:https://djangobook.com/beginning-django-tutorial-contents/
 
 https://edu.csdn.net/notebook/python/week08/5.html
 
+https://www.pythoncheatsheet.org/#Lambda-Functions
+https://www.fullstackpython.com/react.html
+
+react+django
+https://github.com/v1k45/ponynote
+
+vue+django
+https://github.com/ariera/django-vue-template
+
+java+vue
+技术框架：Spring Boot + vue + ElementUI + Spring Security + Redis + RabbitMQ
+https://github.com/lenve/vhr
+
+
 
 
 	
