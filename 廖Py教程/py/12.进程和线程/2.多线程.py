@@ -185,3 +185,20 @@ GIL是Python解释器设计的历史遗留问题，通常我们用的解释器�
 
 Python解释器由于设计时有GIL全局锁，导致了多线程无法利用多核。多线程的并发在Python中就是一个美丽的梦。
 '''
+import time, threading
+
+# 新线程执行的代码:
+def loop():
+    print('thread %s is running...' % threading.current_thread().name)
+    n = 0
+    while n < 5:
+        n = n + 1
+        print('thread %s >>> %s' % (threading.current_thread().name, n))
+        time.sleep(1)
+    print('thread %s ended.' % threading.current_thread().name)
+
+print('thread %s is running...' % threading.current_thread().name)
+t = threading.Thread(target=loop, name='LoopThread')
+t.start()
+t.join()
+print('thread %s ended.' % threading.current_thread().name)
