@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//1.函数参数的默认值
+		//old
+		function log(x, y) {
+		  y = y || 'World';
+		  console.log(x, y);
+		}	
+		log('Hello') // Hello World
+		log('Hello', 'China') // Hello China
+		log('Hello', '') // Hello World
+		//new
+		function log(x, y = 'World') {
+		  console.log(x, y);
+		}
+		
+		log('Hello') // Hello World
+		log('Hello', 'China') // Hello China
+		log('Hello', '') // Hello
+		//函数的length属性
+		(function (a) {}).length // 1
+		(function (a = 5) {}).length // 0
+		(function (a, b, c = 5) {}).length // 2
+		//作用域
+		var x = 1;
+		function f(x, y = x) {
+		  console.log(y);
+		}
+		f(2) // 2
+		//上面代码中，参数y的默认值等于变量x。调用函数f时，参数形成一个单独的作用域。在这个作用域里面，默认值变量x指向第一个参数x，而不是全局变量x，所以输出是2。
+		//2.rest参数
+		function add(...values) {
+		  let sum = 0;	
+		  for (var val of values) {
+		    sum += val;
+		  }
+		  return sum;
+		}
+		add(2, 5, 3) // 10
+		//下面是一个 rest 参数代替arguments变量的例子。		
+		// arguments变量的写法
+		function sortNumbers() {
+		  return Array.prototype.slice.call(arguments).sort();
+		}
+		
+		// rest参数的写法
+		const sortNumbers = (...numbers) => numbers.sort();
+		
+		function push(array, ...items) {
+		  items.forEach(function(item) {
+		    array.push(item);
+		    console.log(item);
+		  });
+		}	
+		var a = [];
+		push(a, 1, 2, 3)
+		
+		//3.严格模式
+		//5.箭头函数
+		var f=v=>v;
+		//等同于
+		var f=function(v){
+			return v;
+		}
+		//如果箭头函数不需要参数或需要多个参数，就使用一个圆括号代表参数部分
+		var f=()=>5;
+		var f=function(){return 5};
+		
+		var sum=(num1,num2)=>num+num2;
+		//等同于
+		var sum=function(num1,num2){
+			return num1+num2;
+		};
+		//如果箭头函数的代码多于一条语句，就要使用大括号将它们括起来，并且使用return语句返回
+		var sum=(num1,num2)=>{return num1+num2;}
+		//由于大括号被解释为代码块，所以如果箭头函数直接返回一个对象，必须在对象外面加上括号，否则会报错。
+		//报错
+		let getTempItem = id => { id: id, name: "Temp" };
+		//不报错
+		let getTempItem = id => ({ id: id, name: "Temp" });
+		//下面是一种特殊情况，虽然可以运行，但会得到错误的结果。
+		
+		let foo = () => { a: 1 };
+		foo() // undefined
+	</script>
+</html>

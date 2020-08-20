@@ -1,0 +1,24 @@
+1.先创建一个测试数据库test_db_del
+CREATE DATABASE test_db_del;
+
+2.查看有没有创建成功
+SHOW DATABASES;
+
+3.使用删除SQL语句
+DROP DATABASE test_db_del;
+
+4.查看有没有删除成功
+SHOW DATABASES;
+
+扩展:
+如果数据库test_db_del不存在，再次执行相同的命令,直接使用
+DROP DATABASE test_db_del,
+系统会报错
+如果使用IF EXISTS从句，可以防止系统报此类的错误
+DROP DATABASE IF EXISTS test_db_del;
+
+使用 DROP DATABASE 命令时要非常谨慎，在执行该命令后，
+MySQL 不会给出任何提示确认信息。
+DROP DATABASE 删除数据库后，
+数据库中存储的所有数据表和数据也将一同被删除，
+而且不能恢复。因此最好在删除数据库之前先将数据库进行备份。

@@ -1,0 +1,41 @@
+在 MySQL 中，查看帮助的命令是 HELP，语法格式如下：
+HELP 查询内容
+
+其中，查询内容为要查询的关键字。
+查询内容中不区分大小写。
+查询内容中可以包含通配符“％”和“_”，效果与 LIKE 运算符执行的模式匹配操作含义相同。例如，HELP 'rep％' 用来返回以 rep 开头的主题列表。
+查询内容可以使单引号引起来，也可以不使用单引号，为避免歧义，最好使用单引号引起来。
+
+1.查询帮助文档目录列表
+HELP'contents';
+
+2.查看具体内容
+根据上面运行结果列出的目录，可以选择某一项进行查询。例如使用 HELP Data Types; 命令查看所支持的数据类型，运行结果如下：
+HELP 'Data Types';
+
+如果还想进一步查看某一数据类型，如 INT 类型，可以使用 HELP INT;命令，运行结果如下：
+HELP 'INT';
+运行结果中可以看到 INT 类型的帮助信息，包含类型描述、取值范围和官方手册中 INT 类型说明的 URL。
+
+另外，还可以查询某命令，例如使用 HELP CREATE TABLE 命令查询创建数据表的语法，运行结果如下所示：
+mysql> HELP 'CREATE TABLE'
+Name: 'CREATE TABLE'
+Description:
+Syntax:
+CREATE [TEMPORARY] TABLE [IF NOT EXISTS] tbl_name
+    (create_definition,...)
+    [table_options]
+    [partition_options]
+
+CREATE [TEMPORARY] TABLE [IF NOT EXISTS] tbl_name
+    [(create_definition,...)]
+    [table_options]
+    [partition_options]
+    [IGNORE | REPLACE]
+    [AS] query_expression
+拓展
+MySQL 提供了 4 张数据表来保存服务端的帮助信息，即使用 HELP 语法查看的帮助信息。执行语句就是从这些表中获取数据并返回给客户端的，MySQL 提供的 4 张数据表如下：
+help_category：关于帮助主题类别的信息
+help_keyword：与帮助主题相关的关键字信息
+help_relation：帮助关键字信息和主题信息之间的映射
+help_topic：帮助主题的详细内容

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+        }
+
+        #parent{
+            background-color: salmon;
+            height: 100%;
+            width: 100%;
+            position: absolute;/*一定要加上，不然没有高度*/
+        }
+        #left{
+            float: left;
+            height: 100%;
+            width: 20%;//设置百分比
+            background-color: blueviolet;
+        }
+        #right{
+            background-color: saddlebrown;
+            height: 100%;
+            float: right;
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+<div id="parent">
+<div id="left">
+    左浮动float: left;
+</div>
+<div id="right">
+    右浮动float: right;
+</div>
+</div>
+</body>
+</html>

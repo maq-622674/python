@@ -1,0 +1,11 @@
+1.查看test_db数据库的定义声明
+SHOW CREATE DATABASE test_db;
+
+使用命令行工具将数据库test_db的指定字符集修改为gb2312，默认校对规则修改为
+utf8_unicode_ci
+sql语句为:
+执行没有成功
+CREATE DATABASE test_db
+DEFAULT CHARACTER SET gb2312
+DEFAULT COLLATE gb2312_chinese_ci;
+SHOW CREATE DATABASE test_db;

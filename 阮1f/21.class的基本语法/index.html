@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+</head>
+<body>
+	
+</body>
+<script>
+	// 1.类的由来
+	// js语言中，生成实例对象是通过构造方法
+	function Point(x,y){
+		this.x=x;
+		this.y=y;
+	}
+	Point.prototype.toString=function(){
+		return '('+this.x+','+this.y+')'
+	}
+	var p=new Point(1,2)
+	
+</script>
+<script>
+	// class Point{
+	// 	constructor(x,y) {
+	// 	    this.x=x;
+	// 		this.y=y;
+	// 	}
+	// 	toString(){
+	// 		return '('+this.x+','+this.y+')'
+	// 	}
+	// }
+</script>
+<!-- 1.2constructor方法 -->
+<!-- 1.3类的实例 -->
+<!-- 1.4取值函数getter和存值函数setter -->
+
+<script>
+	<!-- 1.5属性表达式 -->
+	let methodName='getArea';
+	class Square{
+		constructor(length) {
+		    
+		}
+		[methodName](){
+			console.log("123")
+		}
+	}
+	p1=new Square();
+	p1.getArea();
+</script>
+<script type="text/javascript">
+	// 1.6Class表达式
+	const MyClass=class Me{
+		getClassName(){
+			return Me.name;
+		}
+	};
+	let inst=new MyClass();
+	console.log(inst.getClassName())//Me
+	
+	let person=new class{
+		constructor(name) {
+		    this.name=name;
+		}
+		sayName(){
+			console.log(this.name);//张三
+		}
+	}('张三');
+	person.sayName();
+</script>
+<script>
+	// 1.7注意点
+	
+</script>
+</html>

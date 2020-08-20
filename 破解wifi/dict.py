@@ -19,7 +19,7 @@ class Range(object):
            
      
        
-        words="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.*%$"
+        words="0123456789abcdefghijklmnopqrstuvwxyz"
         #生成密码本的位数，五位数，repeat=5
         r=its.product(words,repeat=6)
         #保存在文件中，追加

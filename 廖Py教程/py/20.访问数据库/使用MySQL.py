@@ -5,7 +5,7 @@ conn = mysql.connector.connect(
     host='rm-wz97d5ot77lk3t824sm.mysql.rds.aliyuncs.com', # 主机模块
     port=3306, # 端口号
     user='aaa',# 用户名
-    password='1234567890', # 密码
+    password='123456789', # 密码
 )
 cursor = conn.cursor()
 # 创建user表:

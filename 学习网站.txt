@@ -19,7 +19,7 @@ vue+django
 https://github.com/ariera/django-vue-template
 
 java+vue
-技术框架：Spring Boot + vue + ElementUI + Spring Security + Redis + RabbitMQ
+技术框架：Spring Boot + vue + ElementUI + Spring Security + sRedis + RabbitMQ
 https://github.com/lenve/vhr
 
 

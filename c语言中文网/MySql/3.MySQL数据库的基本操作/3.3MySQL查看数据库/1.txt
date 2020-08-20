@@ -1,0 +1,19 @@
+1.查看所有数据库
+SHOW DATABASES;
+
+2.创建并查看数据库
+CREATE DATABASE test_db;
+
+3.使用LIKE语句
+3.1使用LIKE从句，查看test_db完全匹配的数据库
+SHOW DATABASES LIKE 'test_db';
+
+3.2使用LIKE从句，查看名字中包含test的数据库
+SHOW DATABASES LIKE '%test%';
+
+3.3使用LIKE从句,查看名字以db开头的数据库
+SHOW DATABASES LIKE 'db%';
+
+3.4使用LIKE从句，查看名字以db结尾的数据库
+SHOW DATABASES LIKE '%db';
+

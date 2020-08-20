@@ -1,0 +1,117 @@
+一.MySQL服务器端错误代码和消息
+MySQL 是根据安装目录下 share 中的 errmsg.txt 文件来生成 include 下 mysqld_error.h 和 mysqld_ername.h 中的错误定义的。另外，SQLSTATE 的值也是根据 share 下 errmsg.txt 文件中的内容来生成 include 下的 sql_state.h 的。
+
+默认情况下，服务器出错代码都是以 1 开头的，例如“1004 SQLSTATE: HY000 (ER_CANT_CREATE_FILE)”，该消息的错误代码为 1004，表示“无法创建文件”。
+
+errmsg.txt 文件的部分内容如下：
+#define ER_NO_SUCH_TABLE 1146
+"Table '%-.64s.%-.64s' doesn't exist",
+#define ER_NONEXISTING_TABLE_GRANT 1147
+"There is no such grant defined for user '%-.32s' on host '%-.64s' on table '%-.64s'",
+#define ER_NOT_ALLOWED_COMMAND 1148
+"The used command is not allowed with this MySQL version",
+#define ER_SYNTAX_ERROR 1149
+"You have an error in your SQL syntax. Check the manual that corresponds to your MySQL server version for the right syntax to use",
+#define ER_DELAYED_CANT_CHANGE_LOCK 1150
+"Delayed insert thread couldn't get requested lock for table %-.64s",
+#define ER_TOO_MANY_DELAYED_THREADS 1151
+"Too many delayed threads in use",
+文件中包含的 %d 和 %ld 代表数值，%s 代表字符串。显示具体信息时，它们将被消息值取代。
+
+例如，错误代码为 1146 的错误信息在 share 下的 errmsg.txt 中显示为“Table '%-.192s.%-.192s' doesn't exist"，即“表' '%-.192s.%-.192s"不存在”。其中“%-.192s”可表示左对齐 192 个字符宽度，可理解为此处输出为占位字符串，在显示具体信息时回避字符串消息替换。
+例 1
+切换 test 数据库，查询数据库下有哪些数据表，SQL 语句和执行过程如下：
+mysql> USE test;
+Database changed
+mysql> SHOW tables;
++-------------------+
+| Tables_in_test    |
++-------------------+
+| tb_eventtest      |
+| tb_student        |
+| tb_student2       |
+| tb_student3       |
+| tb_student_course |
+| tb_students_info  |
++-------------------+
+6 rows in set (0.01 sec)
+查询数据表 tb_student 中的记录，SQL 语句和执行过程如下：
+mysql> SELECT * FROM tb_student;
++----+--------+
+| id | name   |
++----+--------+
+|  1 | Java   |
+|  2 | MySQL  |
+|  3 | Python |
++----+--------+
+3 rows in set (0.06 sec)
+查询数据表 tb_oldstudent 中的记录，SQL 语句和运行结果如下：
+mysql> SELECT * FROM tb_oldstudent;
+ERROR 1146 (42S02): Table 'test.tb_oldstudent' doesn't exist
+
+由结果可以看出，在 test 数据库中不存在 tb_oldstudent 数据库，服务器错误代码为 1146。
+MySQL客户端错误代码和消息
+MySQL 是根据安装目录下 include 中的 errmsg.h 文件来生成错误代码的。
+
+errmsg.h 文件的部分内容如下：
+#define CR_NAMEDPIPESETSTATE_ERROR 2018
+#define CR_CANT_READ_CHARSET 2019
+#define CR_NET_PACKET_TOO_LARGE 2020
+#define CR_EMBEDDED_CONNECTION_2021
+#define CR_PROBE_SLAVE_STATUS 2022
+#define CR_PROBE_SLAVE_HOSTS 2023
+#define CR_PROBE_SLAVE_CONNECT 2024
+#define CR_PROBE_MASTER_CONNECT 2025
+#define CR_SSL_CONNECTION_ERROR 2026
+#define CR_MALFORMED_PACKET 2027
+#define CR_WRONG_LICENSE 2028
+文件中 %d 和 %s 分别代表数值和字符串，和服务器端错误代码显示方式一样，在显示时它们将被消息值取代。
+
+默认情况下，客户端出错代码都是以 2 开头的，例如错误代码为 2025（CR_PROBE_MASTER_CONNECT）的，表示连接到主服务器时出错。
+常见错误代码
+常见的服务器错误代码及说明如下表所示：
+错误代码	说  明
+1004	无法创建文件
+1005	无法创建数据表、创建表失败
+1006 	无法创建数据库、创建数据库失败
+1007	无法创建数据库，数据库己存在
+1008 	无法删除数据库，数据库不存在
+1009	不能删除数据库文件导致删除数据库失败
+1010 	不能删除数据目录导致删除数据库失败
+1011	删除数据库文件时出错
+1012	无法读取系统表中的记录
+1013	无法获取的状态
+1014	无法获得工作目录
+1015	无法锁定文件
+1016	无法打开文件
+1017	无法找到文件
+1018	无法读取的目录
+1019	无法为更改目录
+1020	记录已被其它用户修改
+1021	硬盘剩余空间不足，请加大硬盘可用空间
+1022	关键词重读，更改记录失败
+1023	关闭时发生错误
+1025	更改名字时发生错误
+1032	记录不存在
+1036	数据表是只读的，不能对它进行修改
+1037	系统内存不足，请重启数据库或重启服务器
+1042	无效的主机名
+1044	当前用户没有访问数据库的权限
+1045	不能连接数据库，用户名或密码错误常见的客户端错误代码及说明如下所示：
+错误代码	说  明
+2000	未知 MySQL 错误
+2001	不能创建 UNIX 套接字（%d）
+2002	不能通过套接字“ %s”（%d）连接到本地 MySQL 服务器， self 服务未启动
+2003	不能连接到 %s ”（%d ）上的 MySQL 服务器，未启动 mysql 服务
+2004	不能创建 TCP/IP 接字（%d）
+2005	未知的 MySQL 服务器主机“ %s”（%d）
+2007	协议不匹配，服务器版本=%d，客户端版本=%d
+2008	MySQL 客户端内存溢出
+2009	错误的主机信息
+2010	通过 UNIX 套接字连接的本地主机
+2012	服务器握手过程中出错
+2013	查询过程中丢失了与 SQL 服务器的连接
+2014	命令不同步，现在不能运行该命令
+2024	连接到从服务器时出错
+2025	连接到主服务器时出错
+2026	SSL 连接错误
