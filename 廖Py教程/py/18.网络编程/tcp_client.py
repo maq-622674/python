@@ -19,4 +19,4 @@ while True:
     client.send(sendmsg.encode("utf-8"))
     response = client.recv(2048)
     print(response.decode("utf-8"))
-client.close()
+#client.close()

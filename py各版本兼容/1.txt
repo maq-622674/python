@@ -1,0 +1,23 @@
+Django版本	                     Python版本
+1.8	                            2.7，3.2（直到2016年底），3.3, 3.4, 3.5
+1.9, 1.10	                    2.7, 3.4, 3.5
+1.11	                        2.7 , 3.4 , 3.5 , 3.6
+2.0	                            3.5+
+
+Tornado版本
+
+Flask版本
+
+Scrapy版本
+
+django_env默认在pyenv里
+5、激活虚拟环境
+pyenv activate django_env
+6、退出虚拟环境
+pyenv deactivate
+
+pipenv
+
+Github星
+pyenv 20.5k
+pipenv 20.9k

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <img src="https://www.baidu.com/img/flexible/logo/pc/result.png" alt="">
+        <input type="text" id="search">
+    </div>
+    <ul id="list"></ul>
+</body>
+<script>
+    //https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=${text}&cb=fn
+    var search=document.querySelector('#search')
+    var list=document.querySelector('#list')
+    search.onkeyup=function(){
+        var text=this.value;
+
+        var script=document.createElement('script')
+        script.src=`https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=${text}&cb=fn`
+        document.body.appendChild(script)
+    }
+    function fn(resp){
+        console.log(resp);
+    }
+</script>
+</html>

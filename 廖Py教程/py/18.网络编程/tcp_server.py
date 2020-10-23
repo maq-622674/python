@@ -54,6 +54,7 @@
 import socket
 import threading
 import time
+import json
 
 bind_ip = '127.0.0.1' #这里是服务器端的ip
 bind_port = 9999
@@ -82,12 +83,54 @@ def tcplink(sock, addr):
       print("收到:" + msg)
       #返还一个数据包
       #服务端回他消息
-      ans = input("回复：")
-      if ans == 'over':
-         print("Game over!")
-         break
+      lastQueryTime=int(time.time())
+      data={
+                "serviceResponse":
+                {
+                    "list":
+                    [
+                        {
+                            "operation":"save",
+                            "userType":"student",
+                            "userId":"1112222",
+                            "userName":"刘金",
+                            "sex":"1",
+                            "userRemark":"学生",
+                            "userImageUrl":"http://192.168.101.2/File/jimuti/Pic/2.png",
+                            "operateTime":lastQueryTime                                             
+                        },
+                        {
+                            "operation":"save",
+                            "userType":"student",
+                            "userId":"1112222",
+                            "userName":"刘金",
+                            "sex":"1",
+                            "userRemark":"学生",
+                            "userImageUrl":"http://192.168.101.2/File/jimuti/Pic/6.jpg",
+                            "operateTime":lastQueryTime                                           
+                        },
+                        {
+                            "operation":"save",
+                            "userType":"student",
+                            "userId":"1112222",
+                            "userName":"刘金",
+                            "sex":"1",
+                            "userRemark":"学生",
+                            "userImageUrl":"http://192.168.101.2/File/jimuti/Pic/7.jpg",
+                            "operateTime":lastQueryTime                                               
+                        }
+                    ], 
+                    "lastQueryTime":lastQueryTime               
+                },
+            }
+      ans=json.dumps(data)
+      # ans = input("回复：")
+      # if ans == 'over':
+      #    print("Game over!")
+      #    break
       # send表示发送数据，发送的数据必须是二进制数据
       client.send(ans.encode("utf-8"))
+      #client.send(ans.encode("utf-8"))
 
      
     # sock.send(b'Welcome!')

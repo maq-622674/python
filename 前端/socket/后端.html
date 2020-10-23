@@ -1,0 +1,40 @@
+<!DOCTYPE html>  
+<meta charset="utf-8" />  
+<title>WebSocket Test</title>  
+<script language="javascript"type="text/javascript">  
+    var ws = new WebSocket("ws://127.0.0.1/API?action=time");
+    ws.onopen=function(){
+        var msg = JSON.stringify({
+            type: "login",
+            content: "login"
+        });
+        ws.send(msg);
+    }
+    
+    ws.onmessage = function (e){ 
+        console.log(e);
+        //服务器发送的内容
+        var res = JSON.parse(e.data);
+        switch(res.type){
+            case "login":
+                
+                break;
+            case "pm":
+                
+                break;
+            case "groupPm":
+                
+                break;
+                
+        }
+    }
+    ws.onerror=function (e){ 
+        console.log(e);
+    }
+    ws.onclose=function (e){ 
+        console.log(e);
+    }
+</script>  
+<h2>WebSocket Test</h2>  
+<div id="output"></div>  
+</html>
