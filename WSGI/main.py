@@ -42,7 +42,7 @@ class classWSGI:
         #5.路由文件列表
         self.ROUTE_FILE_LIST.clear()
         #6.清除
-        self.SERVER_NAME = "Jmt-Server"
+        self.SERVER_NAME = ""
         #7.服务器名字
         ######################################
         #8.请求重启程序

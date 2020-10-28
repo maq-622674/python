@@ -13,13 +13,13 @@ def StrOfSize(size):
 
     units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB']
     integer, remainder, level = strofsize(size, 0, 0)
-    print(integer, remainder, level)
+    #print(integer, remainder, level)
     if level+1 > len(units):
         level = -1
     return ('{}.{:>03d} {}'.format(integer, remainder, units[level]))
 
 
-bbb = StrOfSize(100045)
+#bbb = StrOfSize(100045)
 
 
 b= 10240000
@@ -33,7 +33,8 @@ elif 1000000000 <= b < 1000000000000:
     size='%.1f' % float(b/1000000000) + 'GB'
 elif 1000000000000 <= b:
     size='%.1f' % float(b/1000000000000) + 'TB'
-print(size)
+#print(size)
+
 
 
 
