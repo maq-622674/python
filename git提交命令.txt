@@ -37,3 +37,23 @@ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 5.git push 把本地的推送到远程的分支上面即可
 
 6.git status 查看
+
+
+重新拉取项目
+1.git init
+2.git pull git@github........git
+3.修改后提交步骤 git add .
+4.添加提交描述git commit -m '描述内容'
+5.把本地仓库远程提交git push -u origin master
+或者是git push git@github.com.....git master
+
+扩展
+创建合并分支
+1.git branch 查看分支
+2.git branch <name> 创建分支
+3.git checkout <name>切换分支
+4.git checkout -b <name>创建+切换分支
+5.git merge <name> 合并某分支到当前分支
+6.git branch -d <name>删除分支
+
+
