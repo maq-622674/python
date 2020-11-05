@@ -9,20 +9,15 @@ class UploadHandler(tornado.web.RequestHandler):
         self.set_header("Access-Control-Allow-Origin", "*") # 这个地方可以写域名
         self.set_header("Access-Control-Allow-Headers", "x-requested-with")
         self.set_header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS')
-
         cpu=random.randint(0,100)
         self.write({'result':'ok', 'cpu': cpu})
-    
-        #self.write({'result':'ok', 'time': 'failed','msg':'123'})
-
-        #print("123")
-        #self.render('templates/upload.html')
     def post(self,*args,**kwargs):
         #获取请求参数
         print("self:",self)
         print("self.request:",self.request)
         print("self.request.files:",self.request.files)
         print("self.request.files[\"img1\"]:",self.request.files["img1"])
+        
         img1=self.request.files['img1']
         for img in img1:
             body=img.get('body','')
