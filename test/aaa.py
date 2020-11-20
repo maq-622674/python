@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 list1=[{
     "id":"123",
     "code":"true"
@@ -15,3 +16,16 @@ while True:
         print(item["id"])
         print(item["code"])
     time.sleep(1)
+=======
+import threading
+import time
+
+import urllib.request
+def aaa():
+    while True:
+        response = urllib.request.urlopen('https://www.python.org')
+        print(response.read().decode('utf-8'))
+        time.sleep(0.5)
+t1=threading.Thread(target=aaa)
+t1.start()
+>>>>>>> 717a2bd7f5645517b58231aa6f157c15332b1068
