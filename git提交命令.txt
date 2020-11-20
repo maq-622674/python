@@ -57,3 +57,13 @@ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 6.git branch -d <name>删除分支
 
 
+
+先拉项目
+git add .
+git commit -m "pull code"
+git pull origin master
+再提交
+git add .
+git commit -m ok
+git push origin master
+
