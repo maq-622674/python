@@ -22,18 +22,7 @@ def StrOfSize(size):
 #bbb = StrOfSize(100045)
 
 
-b= 10240000
-if b < 1000:
-    size='%.1f' % b + 'B'
-elif 1000 <= b < 1000000:
-    size='%.1f' % float(b/1000) + 'KB'
-elif 1000000 <= b < 1000000000:
-    size='%.1f' % float(b/1000000) + 'MB'
-elif 1000000000 <= b < 1000000000000:
-    size='%.1f' % float(b/1000000000) + 'GB'
-elif 1000000000000 <= b:
-    size='%.1f' % float(b/1000000000000) + 'TB'
-#print(size)
+
 
 
 

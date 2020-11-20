@@ -7,7 +7,7 @@ import os
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
                     datefmt='%a, %d %b %Y %H:%M:%S',
-                    filename='G:/CSDN_L/python/MQ1/demo.log',
+                    filename='C:/MQ1/demo.log',
                     filemode='a')
  
  
@@ -15,7 +15,7 @@ logging.basicConfig(level=logging.INFO,
 # author 胖胖的alex 2017/09/10
 class Demo:
  
-    pidlogpath = "G:/CSDN_L/python/MQ1/pid.run"
+    pidlogpath = "C:/新建文件夹/pid.run"
  
     def __init__(self):
         pass

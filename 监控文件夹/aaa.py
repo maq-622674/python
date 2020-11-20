@@ -14,7 +14,7 @@ def mon_dir():
     
     FILE_LIST_DIRECTORY = 0x0001
     
-    path_to_watch = 'C:/Users/jimuti/Desktop/aaa'
+    path_to_watch = 'C:/Users/Desktop/aaa'
     print('Watching changes in',path_to_watch)
     print("开始监控文件夹",path_to_watch)
     hDir = win32file.CreateFile(

@@ -1,0 +1,9 @@
+virtualenv env
+cd env
+cd Scripts
+activate.bat
+cd ..
+cd ..
+pip install scrapy
+#windows系统下安装
+pip install pywin32
