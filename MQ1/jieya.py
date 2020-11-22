@@ -5,7 +5,7 @@ import os
 import logging
 import threading
 import time
-import Armoury.fso as fso
+import Aaaaaaaaaaaarmoury.fso as fso
 #初始化路径
 MAIN_FOLDER = fso.appfold("Core")
 SETTING_FOLDER = fso.format_path(MAIN_FOLDER + "/setting")
@@ -31,7 +31,7 @@ fso.set_propath("local", fso.format_path(MAIN_FOLDER+"/Local"))
 class Monitor:
  
     pidNotHandle = []
-    pidlogpath = "G:/CSDN_L/python/MQ1/pid.run"
+    pidlogpath = "C:/pid.run"
  
     def __init__(self):
         self.pidNotHandle = list(psutil.process_iter())  # 获取当前计算机的pid

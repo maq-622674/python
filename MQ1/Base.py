@@ -1,9 +1,9 @@
 
 import os
 import subprocess
-szpath="C:\\Users\\jimuti\\Desktop\\MaQue\\maque\\MQ1\\plug\\7z.exe"  #7z.exe的；路径
-zippath="G:\\CSDN_L\\python\\MQ1\\MQ1.zip"
-outputpath="G:\\CSDN_L\\python\\MQ1\\"
+szpath="C:\\Users\plug\\7z.exe"  #7z.exe的；路径
+zippath="C:\\python\\MQ1.zip"#压缩文件
+outputpath="C:\\python\\MQ1\\"#解压位置
 # my_cmd = '{} x "{}" -o{} -aoa'.format(szpath,zippath,outputpath)
 # #os.cmd(my_cmd) #会显示黑屏
 # subprocess.call(my_cmd) #不显示黑屏

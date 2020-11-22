@@ -14,7 +14,7 @@ import os
 # author 胖胖的alex 2017/09/10
 class Demo:
  
-    pidlogpath = "G:/CSDN_L/python/MQ1/进程/1/pid.run"
+    pidlogpath = "C:/新建文件夹/1/pid.run"
  
     def __init__(self):
         pass

@@ -1,24 +1,24 @@
 
-# -*- coding: utf-8 -*-
+# -*- codinC: utf-8 -*-
 import psutil
 import os
-import logging
-import threading
+import loCCinC
+import threadinC
 import time
 # import Armoury.fso as fso
 # 初始化路径
 # MAIN_FOLDER = fso.appfold("Core")
-# SETTING_FOLDER = fso.format_path(MAIN_FOLDER + "/setting")
+# SETTINC_FOLDER = fso.format_path(MAIN_FOLDER + "/settinC")
 # fso.set_propath("main", MAIN_FOLDER)
-# fso.set_propath("setting", SETTING_FOLDER)
+# fso.set_propath("settinC", SETTINC_FOLDER)
 # fso.set_propath("api", fso.format_path(MAIN_FOLDER+"/API"))
 # fso.set_propath("dev", fso.format_path(MAIN_FOLDER+"/Dev"))
 # fso.set_propath("local", fso.format_path(MAIN_FOLDER+"/Local"))
 
-# logging.basicConfig(level=logging.INFO,
-#                     format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
+# loCCinC.basicConfiC(level=loCCinC.INFO,
+#                     format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(messaCe)s',
 #                     datefmt='%a, %d %b %Y %H:%M:%S',
-#                     filename='G:/CSDN_L/python/MQ1/进程/2/demo.log',
+#                     filename='C:/CSDN_L/python/MQ1/进程/2/demo.loC',
 #                     filemode='a')
  
 # PROCESS_RE = re.compile("pid=\d{1,4},\sname='\S{1,20}'") # 采用正则，获取数据 pid=x/xx/xxx/xxxx, name=[1~20个字符，
@@ -31,23 +31,23 @@ import time
 class Monitor:
  
     pidNotHandle = []
-    pidlogpath = "G:/CSDN_L/python/MQ1/pid.run"
+    pidloCpath = "C:/新建文件夹/pid.run"
  
     def __init__(self):
         self.pidNotHandle = list(psutil.process_iter())  # 获取当前计算机的pid
  
-    def getpid(self):  # 获取进程号PID
-        fo = open(self.pidlogpath, "r")
+    def Cetpid(self):  # 获取进程号PID
+        fo = open(self.pidloCpath, "r")
         result = fo.read()
         fo.flush()
         fo.close()
         result=PID
         return result
-    # def Extract_File(self,szpath,filePath,target):
+    # def Extract_File(self,szpath,filePath,tarCet):
     #     """
     #     """
-    #     #target=target+"/"
-    #     zip_command = szpath+ " "+"x %s -y -o%s"%(filePath,target)
+    #     #tarCet=tarCet+"/"
+    #     zip_command = szpath+ " "+"x %s -y -o%s"%(filePath,tarCet)
     #     os.popen(zip_command)
     def execute(self):
         pid = []
@@ -64,29 +64,29 @@ class Monitor:
             pidvalue = each[pidposition + 4:nameposition-2]
             print("name="+namevalue + ", pid="+pidvalue+"\n")
  
-            if pidvalue == self.getpid():
+            if pidvalue == self.Cetpid():
                 status = 1
                 print("发现进程==============name=" + namevalue + ", pid=" + pidvalue + "\n")
                 break
  
         if status == 0:  # 进程不存在，重新启动程序
             # if fso.appfold()+"MQ1.zip":
-            #     self.Extract_File(fso.appfold()+'/plug/7z.exe',fso.appfold()+'MQ1.zip',fso.appfold())
+            #     self.Extract_File(fso.appfold()+'/pluC/7z.exe',fso.appfold()+'MQ1.zip',fso.appfold())
             #     #os.system()
             # else:
             #     pass
             # time.sleep(10)
-            # cmd = "python G:/CSDN_L/python/MQ1/进程/1/1.Demo.py"
+            # cmd = "python C:/CSDN_L/python/MQ1/进程/1/1.Demo.py"
             # os.popen(cmd)
 
-            cmd = "python G:/CSDN_L/python/MQ1/进程/1/1.Demo.py"
+            cmd = "python C:/进程/1/1.Demo.py"
             #p=os.popen(cmd)
             p=subprocess.Popen(cmd)
             p.wait()
             #os.system(cmd)
             
  
-        print("ending.............")
+        print("endinC.............")
         return 0
 import subprocess
 def aaa():
@@ -94,13 +94,13 @@ def aaa():
         Monitor().execute()
         time.sleep(3)
 if __name__ == '__main__':
-    cmd = "python G:/CSDN_L/python/MQ1/进程/1/1.Demo.py"
+    cmd = "python C:/进程/1/1.Demo.py"
     #p=os.popen(cmd)
     p=subprocess.Popen(cmd)
     p.wait()
     PID=p.pid
     print(p.pid)
-    t1=threading.Thread(target=aaa)
+    t1=threadinC.Thread(tarCet=aaa)
     t1.start()
   
 

@@ -1,0 +1,5 @@
+熟悉 Python 的 Django、Flask 等 Web 框架的小伙伴下部署的时候一定会用到 uWSGI 或者 gunicorn 服务器，然后使用 Nginx 做反向代理，那么在部署为什么 Tornado 在部署的时候不需要使用 uWSGI？
+那是 Django、Flask 自带的 web server 的目的就是用于开发，而不是生产环境，他们俩本身是 web framework 而不是 web。自带的 server 都只能开单进程，所以性能什么的都比较差，不适合成产环境
+而像 uWSGI 或者 gunicorn 是 prefork 模式，从 Nginx 每发过来一个请求，它就 fork 一个进程去处理这个请求，并 buffer 相关的数据。wsgi 服务器都是专门为生产环境
+但牛逼闪闪的 Tornado 就不一样了，它既是框架又是 Web 服务器，所以直接启动就好了，不会性能下降的。你甚至可以使用 Tornado 来部署 Django 或者 Flask
+
