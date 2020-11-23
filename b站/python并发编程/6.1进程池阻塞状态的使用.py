@@ -2,6 +2,7 @@ import multiprocessing
 import time
 '''
 这里视频里讲解有问题
+
 '''
 #进程执行的任务函数
 def func(msg):
