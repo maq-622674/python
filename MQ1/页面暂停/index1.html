@@ -1,0 +1,44 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>js默认关闭和恢复</title>
+    <style>
+        body{
+            background-color: #f1f1f1;
+            color: blue;
+        }
+        button{
+            height: 40px;
+            margin: 10px;
+            display: inline-block;
+            padding: 10px;
+        }
+        section{
+            line-height: 24px;
+
+        }
+    </style>
+</head>
+<body id="body">       
+    <main  style="height: 10000px;">
+
+
+        <article>
+            <section style=" text-align: center; position: fixed; left: 0; bottom: 10px; height: 50px; width: 100%;background-color: #f1f1f1;">
+                <button onclick="defaultOff()">关闭默认事件</button>
+                <button onclick="defaultOn()">恢复默认事件</button>
+            </section>
+            <section>
+                此应用场景，多应用于弹出层显示时，关闭默认事件，阻止浏览器滚动及滑动，但是关闭弹出层是默认事件就需要恢复了
+            </section>
+            <section>当关闭默认事件，页面滚动和滑动以及浏览器自动的事件都将被取消</section>
+            <section>当开启默认事件，浏览器恢复默认事件</section>
+        </article>
+    </main>
+    <script>
+        
+    </script>
+</body>

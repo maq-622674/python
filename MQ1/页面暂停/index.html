@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <script type="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.7.2/jquery.min.js">
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $('input:radio').click(function () {
+                var domName = $(this).attr('name');
+                var $radio = $(this);
+                if ($radio.data('waschecked') == true) {
+                    $radio.prop('checked', false);
+                    $("input:radio[name='" + domName + "']").data('waschecked', false);
+                } else {
+                    $radio.prop('checked', true);
+                    $("input:radio[name='" + domName + "']").data('waschecked', false);
+                    $radio.data('waschecked', true);
+                }
+            });
+        });
+    </script>
+    <script>
+
+        let t1 = 0;
+        let t2 = 0;
+        let timer = null; // 定时器
+
+        // scroll监听
+        document.onscroll = function () {
+            clearTimeout(timer);
+            timer = setTimeout(isScrollEnd, 1000);
+            t1 = document.documentElement.scrollTop || document.body.scrollTop;
+        }
+
+        function isScrollEnd() {
+            t2 = document.documentElement.scrollTop || document.body.scrollTop;
+            if (t2 == t1) {
+                console.log('滚动结束了')
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <input type="radio" name="radio" value="The First">暂停消息<br />
+    <div style="width: 500px;height: 2500px;background-color:green;"></div>
+
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload</title>
+    <script src="/File/jimuti/JS/jquery.js"></script>
+</head>
+<body>
+<form method="POST" action="/Upload" enctype="multipart/form-data">
+    <!-- <input type="text" name="user" /> -->
+    <input type="file" name="itemname" multiple />
+    <input type="submit" value="提交" />
+</form>
+<div>
+</div>
+<div id="dragbox" style="width:250px;height:250px;background-color:antiquewhite">
+</div>
+<script>
+    window.onload=function(){
+//拖离
+        document.addEventListener("dragleave",function(e){e.preventDefault();});
+//拖后放
+        document.addEventListener("drop",function(e){e.preventDefault();});
+//拖进
+        document.addEventListener("dragenter",function(e){e.preventDefault();});
+        document.addEventListener("dragover",function(e){e.preventDefault();});
+    }
+    var dragbox=document.getElementById("dragbox");
+    dragbox.addEventListener("drop",function(e){
+        e.preventDefault(); //取消浏览器拖拽效果
+        var filelist=e.dataTransfer.files; //获得文件对象
+        if(filelist.length==0){
+            alert("空文件列表");
+            return false;
+        }
+// if(filelist[0].type.indexOf("image")===-1){
+// alert("非图片");
+// return false;
+// }
+        console.log(filelist.length);
+        console.log(filelist);
+
+        for(var inx=0;inx<filelist.length;inx++){
+            console.log(filelist[inx].name);
+            var fdata=new FormData();
+            fdata.append("itmna",filelist[inx]);
+            fdata.append("newname","newname_"+filelist[inx].name);
+            fdata.append("path","files502/upload/zbh");
+            $.ajax({
+                type:"post",
+                url:"/Upload",
+                async:true,
+                dataType:"text",
+                data:fdata,
+                processData:false,
+                contentType:false,
+                success:function(){
+                    console.log("succ upload");
+                },
+                error:function(e){
+                    console.log(e);
+                }
+            })
+        }
+// alert(filelist[0].name);
+    })
+</script>
+</body>
+</html>
